@@ -16,16 +16,16 @@ def main():
         wincount1, wincount2 = results(n, score, team1, team2, wincount1, wincount2)
 
 def intro():
-    team1 = input("Enter the away team: ")
+    team1 = globals()[input("Enter the away team: ")]
     for i in range (len(team1.pitchers)):
         print ("(", i + 1, ") ", team1.pitchers[i], sep = "")
-    sPitcher1 = input("Enter starting pitcher (pick the corresponding number): ")
-    rPitcher1 = input("Enter relief pitcher (pick the corresponding number): ")
-    team2 = input("Enter the home team: ")
+    sPitcher1 = int(input("Enter starting pitcher (pick the corresponding number): "))
+    rPitcher1 = int(input("Enter relief pitcher (pick the corresponding number): "))
+    team2 = globals()[input("Enter the home team: ")]
     for i in range (len(team2.pitchers)):
         print ("(", i + 1, ")", team2.pitchers[i], sep = "")
-    sPitcher2 = input("Enter starting pitcher (pick the corresponding number): ")
-    rPitcher2 = input("Enter relief pitcher (pick the corresponding number): ")
+    sPitcher2 = int(input("Enter starting pitcher (pick the corresponding number): "))
+    rPitcher2 = int(input("Enter relief pitcher (pick the corresponding number): "))
     n = int(input("how many games: "))
     return n, i, team1, team2, sPitcher1, rPitcher1, sPitcher2, rPitcher2
 

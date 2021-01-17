@@ -37,7 +37,7 @@ class Player:
 
     def status(self, pitcher):
         t = random.randrange(1, 1001)
-        s = ((self.bavg * 1000) * (pitcher.bAvgAgainst * 1000)) / 324
+        s = ((self.bavg * 1000) * (pitcher.bAvgAgainst * 1000)) / 324 # 324 represents known statistical advantage of pitcher in MLB
         print ("batting average:", self.bavg)
         print ("pitcher batting average against:", pitcher.bAvgAgainst)
         print ("randomly picked number", t)
