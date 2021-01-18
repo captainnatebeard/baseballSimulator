@@ -1,64 +1,72 @@
 import random
 
+
 class Team:
     def __init__(self, lineup, pitchers, name):
+        """
+        :type lineup: list
+        :type pitchers: list
+        :type name: str
+        """
         self.lineup = lineup
         self.pitchers = pitchers
         self.name = name
-        #assert type(lineup) == type([]), "lineup must be a list... you jive turkey"
+        # assert type(lineup) == type([]), "lineup must be a list... you jive turkey"
 
     def __repr__(self):
         return "%s" % self.name
 
 
 class Pitcher:
-    def __init__(self, bAvgAgainst, name, handed):
-        self.bAvgAgainst = bAvgAgainst
+    def __init__(self, batting_avg_against, name, handed):
+        """
+        :type batting_avg_against: float
+        :type name: string
+        :type handed: string
+        """
+        self.batting_avg_against = batting_avg_against
         self.name = name
         self.handed = handed
 
-
     def __repr__(self):
         return "%s" % self.name
-
 
 
 class Player:
-    def __init__(self, bavg, name, statusList, handed):
+    def __init__(self, bavg, name, status_list, handed):
         self.bavg = bavg
         self.name = name
-        self.statusList = statusList
+        self.status_list = status_list
         self.handed = handed
-
 
     def __repr__(self):
         return "%s" % self.name
 
-
     def status(self, pitcher):
         t = random.randrange(1, 1001)
-        s = ((self.bavg * 1000) * (pitcher.bAvgAgainst * 1000)) / 324 # 324 represents known statistical advantage of pitcher in MLB
-        print ("batting average:", self.bavg)
-        print ("pitcher batting average against:", pitcher.bAvgAgainst)
-        print ("randomly picked number", t)
-        print ("combined average:", s)
+        s = ((self.bavg * 1000) * (
+            pitcher.batting_avg_against * 1000)) / 324  # 324 represents known statistical advantage of pitcher in MLB
+        print("batting average:", self.bavg)
+        print("pitcher batting average against:", pitcher.batting_avg_against)
+        print("randomly picked number", t)
+        print("combined average:", s)
         if t < s:
-            #singles - 66%
-            #doubles - 20%
-            #triples - 11%
-            #homeruns - 3%
+            # singles - 66%
+            # doubles - 20%
+            # triples - 11%
+            # home runs - 3%
             hitrand = random.randrange(1, 101)
             if hitrand > 97:
-                playerStatus = 4
+                player_status = 4
             elif (hitrand > 86) & (hitrand <= 97):
-                playerStatus = 3
+                player_status = 3
             elif (hitrand > 66) & (hitrand <= 77):
-                playerStatus = 2
+                player_status = 2
             else:
-                playerStatus = 1
+                player_status = 1
         else:
-            playerStatus = 0
-        return playerStatus
+            player_status = 0
+        return player_status
 
 
 jMccann = Player(.318, "James McCann", [], "right")
@@ -69,7 +77,7 @@ nCastellanos = Player(.320, "Nicholas Castellanos", [], "right")
 jUpton = Player(.362, "Justin Upton", [], "right")
 mMahtook = Player(.330, "Mikie Mahtook", [], "right")
 jMartinez = Player(.388, "J.D. Martinez", [], "right")
-vMartinez = Player (.324, "Victor Martinez", [], "right")
+vMartinez = Player(.324, "Victor Martinez", [], "right")
 
 jVerlander = Pitcher(.306, "Justin Verlander", "right")
 mFulmer = Pitcher(.293, "Michael Fulmer", "right")
@@ -84,9 +92,8 @@ aWilson = Pitcher(.327, "Alex Wilson", "right")
 dStumpf = Pitcher(.338, "Daniel Stumpf", "right")
 
 tigers = Team([jMccann, mCabrera, iKingsler, jIglesias, nCastellanos, jUpton, mMahtook, jMartinez,
-			vMartinez],[jVerlander, mFulmer, jZimmerman, mBoyd, aSanchez, dNorris, jWilson,
-			sGreene, wSaupold, aWilson, dStumpf], "Detroit Tigers")
-
+               vMartinez], [jVerlander, mFulmer, jZimmerman, mBoyd, aSanchez, dNorris, jWilson,
+                            sGreene, wSaupold, aWilson, dStumpf], "Detroit Tigers")
 
 mZunino = Player(.331, "Mike Zunino", [], "right")
 dValencia = Player(.314, "Danny Valencio", [], "right")
@@ -111,5 +118,5 @@ tZych = Pitcher(.323, "Tony Zych", "right")
 mRzepczynski = Pitcher(.365, "Marc Rzepczynski", "right")
 
 mariners = Team([mZunino, dValencia, rCano, jSegura, kSeager, bGamel, jDyson, mHaniger, nCruz],
-            [aMiranda, jPaxton, yGallardo, fHernandez, sGaviglio, eRamirez, eDiaz, nVincent,
-             jPazos, tZych, mRzepczynski],"Seattle Mariners")
+                [aMiranda, jPaxton, yGallardo, fHernandez, sGaviglio, eRamirez, eDiaz, nVincent,
+                 jPazos, tZych, mRzepczynski], "Seattle Mariners")
